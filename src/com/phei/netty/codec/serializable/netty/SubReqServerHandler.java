@@ -15,12 +15,11 @@
  */
 package com.phei.netty.codec.serializable.netty;
 
+import com.phei.netty.codec.pojo.SubscribeReq;
+import com.phei.netty.codec.pojo.SubscribeResp;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
-
-import com.phei.netty.codec.pojo.SubscribeReq;
-import com.phei.netty.codec.pojo.SubscribeResp;
 
 /**
  * @author lilinfeng

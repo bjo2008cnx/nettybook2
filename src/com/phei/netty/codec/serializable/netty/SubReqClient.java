@@ -39,17 +39,14 @@ public class SubReqClient {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();
-            b.group(group).channel(NioSocketChannel.class)
-                    .option(ChannelOption.TCP_NODELAY, true)
-                    .handler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        public void initChannel(SocketChannel ch)
-                                throws Exception {
-                            ch.pipeline().addLast(new ObjectDecoder(1024, ClassResolvers.cacheDisabled(this.getClass().getClassLoader())));
-                            ch.pipeline().addLast(new ObjectEncoder());
-                            ch.pipeline().addLast(new SubReqClientHandler());
-                        }
-                    });
+            b.group(group).channel(NioSocketChannel.class).option(ChannelOption.TCP_NODELAY, true).handler(new ChannelInitializer<SocketChannel>() {
+                @Override
+                public void initChannel(SocketChannel ch) throws Exception {
+                    ch.pipeline().addLast(new ObjectDecoder(1024, ClassResolvers.cacheDisabled(this.getClass().getClassLoader())));
+                    ch.pipeline().addLast(new ObjectEncoder());
+                    ch.pipeline().addLast(new SubReqClientHandler());
+                }
+            });
 
             // 发起异步连接操作
             ChannelFuture f = b.connect(host, port).sync();

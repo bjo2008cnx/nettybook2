@@ -15,11 +15,11 @@
  */
 package com.phei.netty.pio;
 
+import com.phei.netty.bio.TimeServerHandler;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import com.phei.netty.bio.TimeServerHandler;
 
 /**
  * @author lilinfeng

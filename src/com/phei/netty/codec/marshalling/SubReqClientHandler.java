@@ -15,10 +15,9 @@
  */
 package com.phei.netty.codec.marshalling;
 
+import com.phei.netty.codec.pojo.SubscribeReq;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
-
-import com.phei.netty.codec.pojo.SubscribeReq;
 
 /**
  * @author lilinfeng

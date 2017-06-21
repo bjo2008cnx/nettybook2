@@ -46,8 +46,7 @@ public class SubReqServer {
                     ch.pipeline().addLast(new SubReqServerHandler());
                 }
             };
-            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100)
-                    .handler(new LoggingHandler(LogLevel.INFO)).childHandler(childHandler);
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100).handler(new LoggingHandler(LogLevel.INFO)).childHandler(childHandler);
 
             // 绑定端口，同步等待成功
             ChannelFuture f = b.bind(port).sync();

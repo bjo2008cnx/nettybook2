@@ -40,11 +40,9 @@ public class EchoServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100)
-                    .handler(new LoggingHandler(LogLevel.INFO)).childHandler(new ChannelInitializer<SocketChannel>() {
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100).handler(new LoggingHandler(LogLevel.INFO)).childHandler(new ChannelInitializer<SocketChannel>() {
                 @Override
-                public void initChannel(SocketChannel ch)
-                        throws Exception {
+                public void initChannel(SocketChannel ch) throws Exception {
                     //固定长度解码器
                     ch.pipeline().addLast(new FixedLengthFrameDecoder(20));
                     ch.pipeline().addLast(new StringDecoder());

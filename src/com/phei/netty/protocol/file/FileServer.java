@@ -40,8 +40,7 @@ public class FileServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG, 100).childHandler(new ChannelInitializer<SocketChannel>() {
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100).childHandler(new ChannelInitializer<SocketChannel>() {
                 /*
                  * (non-Javadoc)
                  *
@@ -49,13 +48,8 @@ public class FileServer {
                  * io.netty.channel.ChannelInitializer#initChannel(io
                  * .netty.channel.Channel)
                  */
-                public void initChannel(SocketChannel ch)
-                        throws Exception {
-                    ch.pipeline().addLast(
-                            new StringEncoder(CharsetUtil.UTF_8),
-                            new LineBasedFrameDecoder(1024),
-                            new StringDecoder(CharsetUtil.UTF_8),
-                            new FileServerHandler());
+                public void initChannel(SocketChannel ch) throws Exception {
+                    ch.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8), new LineBasedFrameDecoder(1024), new StringDecoder(CharsetUtil.UTF_8), new FileServerHandler());
                 }
             });
             ChannelFuture f = b.bind(port).sync();

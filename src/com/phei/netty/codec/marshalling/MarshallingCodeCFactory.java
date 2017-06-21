@@ -15,13 +15,7 @@
  */
 package com.phei.netty.codec.marshalling;
 
-import io.netty.handler.codec.marshalling.DefaultMarshallerProvider;
-import io.netty.handler.codec.marshalling.DefaultUnmarshallerProvider;
-import io.netty.handler.codec.marshalling.MarshallerProvider;
-import io.netty.handler.codec.marshalling.MarshallingDecoder;
-import io.netty.handler.codec.marshalling.MarshallingEncoder;
-import io.netty.handler.codec.marshalling.UnmarshallerProvider;
-
+import io.netty.handler.codec.marshalling.*;
 import org.jboss.marshalling.MarshallerFactory;
 import org.jboss.marshalling.Marshalling;
 import org.jboss.marshalling.MarshallingConfiguration;
