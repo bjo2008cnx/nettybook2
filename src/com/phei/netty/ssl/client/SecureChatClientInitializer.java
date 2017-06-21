@@ -13,8 +13,10 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package com.phei.netty.ssl;
+package com.phei.netty.ssl.client;
 
+import com.phei.netty.ssl.server.SSLMODE;
+import com.phei.netty.ssl.secure.SecureChatSslContextFactory;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;

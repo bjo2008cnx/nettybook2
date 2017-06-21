@@ -1,4 +1,4 @@
-package com.phei.netty.ssl;
+package com.phei.netty.ssl.server;
 
 public enum SSLMODE {
 
