@@ -27,6 +27,8 @@ import org.jboss.marshalling.Marshalling;
 import org.jboss.marshalling.MarshallingConfiguration;
 
 /**
+ * Jboss Marshalling解码器示例
+ *
  * @author Lilinfeng
  * @version 1.0
  * @date 2014年2月25日

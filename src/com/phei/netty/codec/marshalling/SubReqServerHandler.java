@@ -43,7 +43,7 @@ public class SubReqServerHandler extends ChannelHandlerAdapter {
         SubscribeResp resp = new SubscribeResp();
         resp.setSubReqID(subReqID);
         resp.setRespCode(0);
-        resp.setDesc("Netty book order succeed, 3 days later, sent to the designated address");
+        resp.setDesc("Netty book order succeed, 3 days later, sent to the designated address.");
         return resp;
     }
 
