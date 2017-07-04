@@ -24,13 +24,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
+ * 心跳检测
+ *
  * @author Lilinfeng
  * @version 1.0
  * @date 2014年3月15日
  */
 public class HeartBeatRespHandler extends ChannelHandlerAdapter {
 
-    private static final Log LOG = LogFactory.getLog(HeartBeatRespHandler.class);
+    private static final Log log = LogFactory.getLog(HeartBeatRespHandler.class);
 
 
     @Override
@@ -38,9 +40,9 @@ public class HeartBeatRespHandler extends ChannelHandlerAdapter {
         NettyMessage message = (NettyMessage) msg;
         // 返回心跳应答消息
         if (message.getHeader() != null && message.getHeader().getType() == MessageType.HEARTBEAT_REQ.value()) {
-            LOG.info("Receive client heart beat message : ---> " + message);
+            log.info("Receive client heart beat message : ---> " + message);
             NettyMessage heartBeat = buildHeatBeat();
-            LOG.info("Send heart beat response message to client : ---> " + heartBeat);
+            log.info("Send heart beat response message to client : ---> " + heartBeat);
             ctx.writeAndFlush(heartBeat);
         } else ctx.fireChannelRead(msg);
     }

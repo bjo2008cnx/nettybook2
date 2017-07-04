@@ -30,6 +30,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * 登录处理
+ *
  * @author Lilinfeng
  * @version 1.0
  * @date 2014年3月15日
@@ -39,14 +41,8 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
     private final static Log LOG = LogFactory.getLog(LoginAuthRespHandler.class);
 
     private Map<String, Boolean> nodeCheck = new ConcurrentHashMap<String, Boolean>();
-    private String[] whitekList = {"127.0.0.1", "192.168.1.104"};
+    private String[] whitekList = {"127.0.0.1", "192.168.1.104"}; //TODO 改成配置
 
-    /**
-     * Calls {@link ChannelHandlerContext#fireChannelRead(Object)} to forward to
-     * the next {@link ChannelHandler} in the {@link ChannelPipeline}.
-     * <p>
-     * Sub-classes may override this method to change behavior.
-     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         NettyMessage message = (NettyMessage) msg;

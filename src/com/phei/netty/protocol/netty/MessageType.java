@@ -16,6 +16,8 @@
 package com.phei.netty.protocol.netty;
 
 /**
+ * 消息类型枚举值
+ *
  * @author Lilinfeng
  * @version 1.0
  * @date 2014年3月15日

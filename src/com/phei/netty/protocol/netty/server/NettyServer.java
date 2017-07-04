@@ -34,6 +34,9 @@ import org.apache.commons.logging.LogFactory;
 import java.io.IOException;
 
 /**
+ * 服务端
+ * TODO 配置如何改成文件或内存？
+ *
  * @author Lilinfeng
  * @version 1.0
  * @date 2014年3月15日
@@ -44,8 +47,8 @@ public class NettyServer {
 
     public void bind() throws Exception {
         // 配置服务端的NIO线程组
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(); //管理线程组
+        EventLoopGroup workerGroup = new NioEventLoopGroup();//工作线程组
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(ChannelOption.SO_BACKLOG, 100).handler(new LoggingHandler(LogLevel.INFO)).childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
