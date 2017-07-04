@@ -7,6 +7,6 @@ netty权威指南（第二版）对应的源码，并重构以更便于初学者
 部分代码说明 ：
 MarshallingCodeCFactory: jboss的解码器,很实用
 
-aio: AIO的原生实现，很繁琐
+raw:原生的bio，nio，aio实现
 
 
