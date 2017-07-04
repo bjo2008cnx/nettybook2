@@ -22,6 +22,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
+ * 带线程池的BIO实现
+ *
  * @author lilinfeng
  * @version 1.0
  * @date 2014年2月14日
@@ -48,7 +50,8 @@ public class TimeServer {
             server = new ServerSocket(port);
             System.out.println("The time server is start in port : " + port);
             Socket socket = null;
-            TimeServerHandlerExecutePool singleExecutor = new TimeServerHandlerExecutePool(50, 10000);// 创建IO任务线程池
+            // 创建IO任务线程池
+            TimeServerHandlerExecutePool singleExecutor = new TimeServerHandlerExecutePool(50, 10000);
             while (true) {
                 socket = server.accept();
                 singleExecutor.execute(new TimeServerHandler(socket));
