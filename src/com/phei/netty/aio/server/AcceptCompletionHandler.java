@@ -20,6 +20,7 @@ import java.nio.channels.AsynchronousSocketChannel;
 import java.nio.channels.CompletionHandler;
 
 /**
+ * doAccept之后调用的代码
  * @author lilinfeng
  * @version 1.0
  * @date 2014年2月16日
@@ -28,9 +29,11 @@ public class AcceptCompletionHandler implements CompletionHandler<AsynchronousSo
 
     @Override
     public void completed(AsynchronousSocketChannel result, AsyncTimeServerHandler attachment) {
-        attachment.asynchronousServerSocketChannel.accept(attachment, this);
+        System.out.println("accept completed [start]");
+        attachment.channel.accept(attachment, this);
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         result.read(buffer, buffer, new ReadCompletionHandler(result));
+        System.out.println("accept completed [end]");
     }
 
     @Override

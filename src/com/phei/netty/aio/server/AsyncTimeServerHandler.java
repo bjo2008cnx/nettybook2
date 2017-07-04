@@ -21,39 +21,35 @@ import java.nio.channels.AsynchronousServerSocketChannel;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 服务端实现
+ * 服务端实现,需要继承自Runnable
+ *
  * @author Administrator
  * @version 1.0
  * @date 2014年2月16日
  */
 public class AsyncTimeServerHandler implements Runnable {
 
-    private int port;
+    private int port; //服务端开放的端口号
 
     CountDownLatch latch;
-    AsynchronousServerSocketChannel asynchronousServerSocketChannel;
+    AsynchronousServerSocketChannel channel;
 
     public AsyncTimeServerHandler(int port) {
         this.port = port;
         try {
-            asynchronousServerSocketChannel = AsynchronousServerSocketChannel.open();
-            asynchronousServerSocketChannel.bind(new InetSocketAddress(port));
+            channel = AsynchronousServerSocketChannel.open();
+            channel.bind(new InetSocketAddress(port));
             System.out.println("The time server is start in port : " + port);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Runnable#run()
-     */
     @Override
     public void run() {
 
         latch = new CountDownLatch(1);
-        doAccept();
+        doAccept(); //等待连接
         try {
             latch.await();
         } catch (InterruptedException e) {
@@ -62,7 +58,7 @@ public class AsyncTimeServerHandler implements Runnable {
     }
 
     public void doAccept() {
-        asynchronousServerSocketChannel.accept(this, new AcceptCompletionHandler());
+        channel.accept(this, new AcceptCompletionHandler());
     }
 
 }

@@ -36,6 +36,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
 
     @Override
     public void completed(Integer result, ByteBuffer attachment) {
+        System.out.println("read completed [start]");
         attachment.flip();
         byte[] body = new byte[attachment.remaining()];
         attachment.get(body);
@@ -47,6 +48,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+        System.out.println("read completed [end]");
     }
 
     private void doWrite(String currentTime) {
