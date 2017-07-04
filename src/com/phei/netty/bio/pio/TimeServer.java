@@ -13,13 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.phei.netty.bio;
+package com.phei.netty.bio.pio;
+
+import com.phei.netty.bio.simple.TimeServerHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
+ * 带线程池的BIO实现
+ *
  * @author lilinfeng
  * @version 1.0
  * @date 2014年2月14日
@@ -46,9 +50,11 @@ public class TimeServer {
             server = new ServerSocket(port);
             System.out.println("The time server is start in port : " + port);
             Socket socket = null;
+            // 创建IO任务线程池
+            TimeServerHandlerExecutePool singleExecutor = new TimeServerHandlerExecutePool(50, 10000);
             while (true) {
                 socket = server.accept();
-                new Thread(new TimeServerHandler(socket)).start();
+                singleExecutor.execute(new TimeServerHandler(socket));
             }
         } finally {
             if (server != null) {
