@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.phei.netty.aio;
+package com.phei.netty.aio.server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -21,6 +21,7 @@ import java.nio.channels.AsynchronousServerSocketChannel;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * 服务端实现
  * @author Administrator
  * @version 1.0
  * @date 2014年2月16日
